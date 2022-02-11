@@ -21,7 +21,8 @@ class SuperjobruSpider(scrapy.Spider):
     @staticmethod
     def vacancy_parse(response: HtmlResponse):
         name = response.xpath("//h1//text()").get()
-        salary = response.xpath("//div[contains(@class, 'vacancy-base-info')]/*/*/*/*/span/span[1]//text()").getall()
+        salary = response.xpath("//span[@class='_2Wp8I _3a-0Y _3DjcL _3fXVo']//text()").getall()
+        print(salary)
         url = response.url
         yield JobparserItem(name=name, salary=salary, url=url)
 
